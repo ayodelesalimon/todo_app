@@ -32,6 +32,7 @@ dependencies:
   sqflite: ^2.0.0+3
   path_provider: any
   flutter_staggered_grid_view: any
+  cool_alert: any
 
 
 dev_dependencies:

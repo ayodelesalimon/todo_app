@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/db/todo_db.dart';
 import 'package:todo_app/models/todo_model.dart';
@@ -62,7 +63,7 @@ class TodoListState extends State<TodoList> {
                  GestureDetector(
                   child: Icon(Icons.edit,color: Colors.grey,),
                   onTap: () {
-                   // up(context, todoList[position]);
+                       navigateToDetail(this.todoList[position], 'Edit Todo');
                   },
                 ),
                 GestureDetector(
@@ -74,8 +75,8 @@ class TodoListState extends State<TodoList> {
               ],
             ),
             onTap: () {
-              debugPrint("ListTile Tapped");
-              navigateToDetail(this.todoList[position], 'Edit Todo');
+              
+             // navigateToDetail(this.todoList[position], 'Edit Todo');
             },
           ),
         );
@@ -97,8 +98,12 @@ class TodoListState extends State<TodoList> {
   }
 
   void _showSnackBar(BuildContext context, String message) {
-    final snackBar = SnackBar(content: Text(message));
-    Scaffold.of(context).showSnackBar(snackBar);
+    	CoolAlert.show(
+      title: "Successfully",
+   context: context,
+   type: CoolAlertType.success,
+   text: message,
+);
   }
 
   void navigateToDetail(Todo todo, String title) async {
